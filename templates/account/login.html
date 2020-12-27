@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Войти
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-12 col-sm-10 col-lg-6 offset-lg-3 offset-sm-1">
+      <form action="." class="card mb-5" method="post">
+        {% csrf_token %}
+        <div class="card-body text-center pt-5">
+          <h1 class="h3 card-title mt-4 mb-2">Авторизация</h1>
+        </div>
+        <hr>
+        <div class="card-body mx-3">
+        </div>
+        <hr>
+        <div class="card-body mx-3">
+          <label class="mb-1 mt-2">Логин</label>
+            {{ form.username }}
+          <label class="mb-1 mt-2">Пароль</label>
+            {{ form.password }}
+          <input type="submit" class="btn btn-primary mt-4 mb-2" value="Войти">
+        </div>
+      </form>
+    </div>
+
+{% endblock %}

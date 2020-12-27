@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ profile.name }}'s Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <header class="container mt-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">TINYSTEPS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'profiles_list' %}">Все репетиторы</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Заявка на подбор</a>
+          </li>
+        </ul>
+      </div>
+      <span class="navbar-text d-sm-none d-lg-block">
+        ☺️
+      </span>
+    </nav>
+  </header>
+  <main class="container mt-3">
+    <div class="card my-4 mx-auto">
+      <div class="card-body m-2 m-md-4">
+        <article class="row">
+          <div class="col-5"><img src="{{ profile.img.url }}" class="img-fluid" alt=""></div>
+          <div class="col-7">
+
+            <section class="teacher=info">
+              <h1 class="h2">{{ profile.name }}</h1>
+              <p><span class="badge badge-secondary mr-2">{{ profile.category.first }}</span>Рейтинг:
+                  {{ profile.rating }} Ставка: {{ profile.amount }} / час</p>
+              <p>{{ profile.description|linebreaks }}</p>
+            </section>
+
+             <section class="available">
+
+              <h4 class="mb-4 mt-5">Записаться на пробный урок</h4>
+
+                 {% for i in profile.free_time.all %}
+                    <h6><a href="{% url 'booking_form_url' profile.id %}" class="btn btn-outline-success mr-2">{{ i }}</a></h6>
+                 {% endfor %}
+
+             <!-- <h6 class="mt-4">Понедельник</h6>
+              <a href="#" class="btn btn-outline-success mr-2">12:00 свободно</a>
+              <a href="#" class="btn btn-outline-success  mr-2">14:00 свободно</a>
+
+              <h6 class="mt-4">Вторник</h6>
+              <a href="#" class="btn btn-outline-success  mr-2">14:00 свободно</a>
+              <a href="#" class="btn btn-outline-success  mr-2">16:00 свободно</a>
+
+              <h6 class="mt-4">Среда</h6>
+              <a href="#" class="btn btn-outline-success  mr-2">14:00 свободно</a>
+              <a href="#" class="btn btn-outline-success  mr-2">16:00 свободно</a>
+              <a href="#" class="btn btn-outline-success  mr-2">18:00 свободно</a>
+
+              <h6 class="mt-4">Четверг</h6>
+
+              <p>Нет свободных уроков</p>
+
+              <h6 class="mt-4">Пятница</h6>
+              <a href="#" class="btn btn-outline-success  mr-2">14:00 свободно</a>
+              <a href="#" class="btn btn-outline-success  mr-2">16:00 свободно</a>
+              <a href="#" class="btn btn-outline-success  mr-2">18:00 свободно</a>
+              -->
+
+            </section>
+
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

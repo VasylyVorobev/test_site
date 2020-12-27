@@ -1,0 +1,5 @@
+venv
+Profi/settings.py
+manage.py
+db.sqlite3
+static

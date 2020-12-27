@@ -28,19 +28,12 @@
           </li>
           <li class="nav-item">
               {% if request.user.is_authenticated %}
-                  <p class="nav-link">Hello {{ request.user.username }}</p>
+                  <span class="nav-link">Hello, {{ request.user.username }}</span>
               {% else %}
                   <a class="nav-link" href="{% url 'login' %}">Авторизация</a>
               {% endif %}
           </li>
         </ul>
-
-{#                      {% if request.user.is_authenticated %}#}
-{#                Hello {{ request.user.first_name }},#}
-{#                <a href="{% url 'logout' %}">Logout</a>#}
-{#            {% else %}#}
-{#                <a href="{% url 'login' %}">Log-in</a>#}
-{#            {% endif %}#}
       </div>
       <span class="navbar-text d-sm-none d-lg-block">
         ☺️

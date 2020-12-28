@@ -1,9 +1,12 @@
 from django.core.mail import send_mail
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
+
 from .models import Profile, Category
 from django.views.generic.list import View
 from django.views.generic.detail import DetailView
 from .forms import SelectionTeacherForm, BookingForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class ProfilesList(View):
@@ -31,7 +34,8 @@ class ProfilesDetail(DetailView):
         return context
 
 
-class SelectionTeacherView(View):
+class SelectionTeacherView(LoginRequiredMixin, View):
+    login_url = reverse_lazy('login')
 
     def get(self, request):
         form = SelectionTeacherForm()
@@ -54,7 +58,8 @@ class SelectionTeacherView(View):
         })
 
 
-class BookingView(View):
+class BookingView(LoginRequiredMixin, View):
+    login_url = reverse_lazy('login')
 
     def get(self, request, pk):
         profile = get_object_or_404(Profile, id=pk)

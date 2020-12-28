@@ -3,3 +3,6 @@ Profi/settings.py
 manage.py
 db.sqlite3
 static
+__pycache__
+desktop.ini
+.idea

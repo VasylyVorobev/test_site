@@ -1,5 +1,5 @@
 from django.core.mail import send_mail
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 
 from .models import Profile, Category
@@ -70,4 +70,3 @@ class BookingView(LoginRequiredMixin, View):
         form = BookingForm(request.POST)
 
         return render(request, 'booking_done.html', {'form': form})
-
